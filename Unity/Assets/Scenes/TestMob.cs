@@ -12,6 +12,7 @@ public class TestMob : MonoBehaviour
     public float mobAttackDelay;
     public float mobSpellDelay;
     public float mobFieldOfVision;
+    public int mobHealth;
 
     private Animator anim;
     private Animator shadowAnim;
@@ -54,7 +55,7 @@ public class TestMob : MonoBehaviour
 
     private void Think()
     {
-        if (b_Hurt || b_IsAttack || b_IsCast)
+        if (b_Hurt)
             return;
 
         f_AattackDelay -= Time.deltaTime;
@@ -65,6 +66,7 @@ public class TestMob : MonoBehaviour
         f_AttackDistance = Vector2.Distance(transform.position, moveTarget);
 
         if (f_Distance <= mobFieldOfVision && !b_IsAttack && !b_IsCast)
+        {
             if (f_AattackDelay <= 0 && f_AttackDistance <= mobAttackRange && !b_IsCast)
             {
                 StopCoroutine(Attack());
@@ -75,8 +77,9 @@ public class TestMob : MonoBehaviour
                 StopCoroutine(Cast());
                 StartCoroutine(Cast());
             }
-            else
+            else if (f_AttackDistance > mobAttackRange)
                 rigid.velocity = (moveTarget - this.transform.position).normalized * 0.75f;
+        }
         else
             rigid.velocity = Vector2.zero;
     }
@@ -122,9 +125,15 @@ public class TestMob : MonoBehaviour
 
             f_AattackDelay = mobAttackDelay;
             attackArea.SetActive(false);
-            MobAnimator("IsHurt");
-            rigid.AddForce((this.transform.position - target.transform.position).normalized * 5, ForceMode2D.Impulse);
-            Invoke("NotHurt", 0.2f);
+            if (mobHealth > 1)
+            {
+                MobAnimator("IsHurt");
+                rigid.AddForce((this.transform.position - target.transform.position).normalized * 5, ForceMode2D.Impulse);
+                Invoke("NotHurt", 0.2f);
+                mobHealth--;
+            }
+            else
+                MobAnimator("IsDeath");
         }
     }
 

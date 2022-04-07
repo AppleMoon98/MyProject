@@ -380,6 +380,7 @@
 "Assets/Joystick Pack/Scripts/Joysticks/FixedJoystick.cs"
 "Assets/Joystick Pack/Scripts/Joysticks/FloatingJoystick.cs"
 "Assets/Joystick Pack/Scripts/Joysticks/VariableJoystick.cs"
+"Assets/Scenes/GameManager.cs"
 "Assets/Scenes/Player.cs"
 "Assets/Scenes/TestMob.cs"
 "Assets/Scenes/TestMobSpell.cs"

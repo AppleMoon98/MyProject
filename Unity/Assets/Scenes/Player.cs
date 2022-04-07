@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameManager manager;
     public VariableJoystick joy;
     public GameObject attackArea;
     public float speed;
@@ -110,7 +111,7 @@ public class Player : MonoBehaviour
         {
             dir.x = rand.flipX ? -1 : 1;
             f_Time += Time.deltaTime;
-            if (f_Time > 0.5f)
+            if (f_Time > (b_Slide ? 0.5f:0.35f))
             {
                 b_Dash = false;
                 b_Slide = false;
@@ -148,15 +149,17 @@ public class Player : MonoBehaviour
     {
         if(collision.tag == "Monster")
         {
-            if (b_Slide || b_Hurt)
+            if (b_Dash || b_Slide || b_Hurt)
                 return;
 
             StopAllCoroutines();
             b_Hurt = true;
             b_Attack = false;
-            PlayerAnimator("IsHurt");
-            rigid.AddForce((this.transform.position - collision.transform.position).normalized * 5, ForceMode2D.Impulse);
-            Invoke("NotHurt", 0.3f);
+            // PlayerAnimator("IsHurt"); ez mod
+            PlayerAnimator("IsDeath");
+            // rigid.AddForce((this.transform.position - collision.transform.position).normalized * 5, ForceMode2D.Impulse);
+            // Invoke("NotHurt", 0.3f);
+            Invoke("playerResurrection", 3f);
         }
     }
 
@@ -181,5 +184,14 @@ public class Player : MonoBehaviour
     {
         animator.SetTrigger(str);
         shadowAnimator.SetTrigger(str);
+    }
+
+    void playerResurrection()
+    {
+        manager.WarpLoad("Layer 2");
+        this.gameObject.layer = 21;
+        rigid.velocity = Vector2.zero;
+        PlayerAnimator("IsResurrection");
+        b_Hurt = false;
     }
 }

@@ -28,6 +28,6 @@ public class TestMobSpell : MonoBehaviour
         collider.enabled = false;
         yield return new WaitForSeconds(0.6f);
 
-        sprite.SetActive(false);
+        Destroy(this.gameObject);
     }
 }

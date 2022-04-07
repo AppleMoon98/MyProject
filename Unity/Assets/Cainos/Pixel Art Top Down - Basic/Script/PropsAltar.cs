@@ -8,15 +8,21 @@ namespace Cainos.PixelArtTopDown_Basic
 
     public class PropsAltar : MonoBehaviour
     {
+        public GameObject test;
+        public GameManager manager;
         public List<SpriteRenderer> runes;
         public float lerpSpeed;
+        public int num;
 
         private Color curColor;
         private Color targetColor;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            manager.WarpSave(num);
             targetColor = new Color(1, 1, 1, 1);
+            test.SetActive(true);
+            test.GetComponent<TestMob>().mobHealth = 5;
         }
 
         private void OnTriggerExit2D(Collider2D other)
