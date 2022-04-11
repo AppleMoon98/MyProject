@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - Cainos.PixelArtTopDown_Basic.CameraFollow
     - Cainos.PixelArtTopDown_Basic.LayerTrigger
     - Cainos.PixelArtTopDown_Basic.PropsAltar
+    - GameManager
     - Player
     - TestMob
     - TestMobSpell
@@ -12,7 +13,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
     - UnityEditor.Tilemaps.GridBrushEditor
@@ -53,6 +53,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -102,20 +103,26 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3388}
     - Class: 114
-      Script: {instanceID: 5032}
+      Script: {instanceID: 4676}
     - Class: 114
-      Script: {instanceID: 5384}
+      Script: {instanceID: 5034}
     - Class: 114
-      Script: {instanceID: 6146}
+      Script: {instanceID: 5386}
     - Class: 114
-      Script: {instanceID: 6528}
+      Script: {instanceID: 6148}
     - Class: 114
-      Script: {instanceID: 7122}
+      Script: {instanceID: 6168}
     - Class: 114
-      Script: {instanceID: 7418}
+      Script: {instanceID: 6530}
     - Class: 114
-      Script: {instanceID: 42604}
+      Script: {instanceID: 6576}
+    - Class: 114
+      Script: {instanceID: 7126}
+    - Class: 114
+      Script: {instanceID: 7422}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -316,7 +323,7 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionEnterMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 4811501554c1bec6ae7daf21dc3fe0b0
+      Hash: d6030c4521722cdd035e2ace95163539
     assemblyName: Assembly-CSharp.dll
     namespaceName: Cainos.PixelArtTopDown_Basic
     className: PropsAltar
@@ -592,6 +599,12 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreak2DMessageListener
   - hash:
       serializedVersion: 2
+      Hash: e80d51ef3ca7813b79ef1037d1950bd9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TestMobSpell
+  - hash:
+      serializedVersion: 2
       Hash: 2574ac7d50617d23cdefe4ad22f5e1ad
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -784,7 +797,7 @@ ScriptsOnlyBuild:
     className: UnityOnDeselectMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 1f9db49c9fc6b867aac3a8cd956a5217
+      Hash: f84dd0f6d7a03f1a8aff582ac377e651
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TestMob
@@ -806,6 +819,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 46af78ee8db3146246b7497903abf2bd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -892,7 +911,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 38d7ff57dfff10d4c963d761a8e17b46
+      Hash: 2836917aa4e8047e39e4e694123eeac2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -1142,13 +1161,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: e80d51ef3ca7813b79ef1037d1950bd9
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: TestMobSpell
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: "E:/Backup/\uC720\uB2C8\uD2F0/\uC0C8 \uD504\uB85C\uC81D\uD2B8/220405.apk"
+  playerPath: "E:/Backup/\uC720\uB2C8\uD2F0/\uC0C8 \uD504\uB85C\uC81D\uD2B8/220406.apk"

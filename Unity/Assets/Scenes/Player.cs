@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public bool invincibility;
     public GameManager manager;
     public VariableJoystick joy;
     public GameObject attackArea;
@@ -24,6 +25,11 @@ public class Player : MonoBehaviour
     private bool b_Slide;
     private bool b_Attack;
     private bool b_Hurt;
+
+    private bool b_Easy;
+    private bool b_Normal;
+    private bool b_Hard;
+    private bool b_Health;
 
     private float f_Time;
 
@@ -111,7 +117,7 @@ public class Player : MonoBehaviour
         {
             dir.x = rand.flipX ? -1 : 1;
             f_Time += Time.deltaTime;
-            if (f_Time > (b_Slide ? 0.5f:0.35f))
+            if (f_Time > (b_Slide ? 0.5f + (b_Hard ? -0.1f : 0) : 0.35f + (b_Hard ? -0.1f : 0)))
             {
                 b_Dash = false;
                 b_Slide = false;
@@ -147,25 +153,37 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Monster")
+        if (collision.tag == "Monster")
         {
-            if (b_Dash || b_Slide || b_Hurt)
+            if (b_Slide || b_Hurt)
+                return;
+
+            // 이지모드
+            if (b_Easy && b_Dash)
                 return;
 
             StopAllCoroutines();
             b_Hurt = true;
             b_Attack = false;
-            // PlayerAnimator("IsHurt"); ez mod
-            PlayerAnimator("IsDeath");
-            // rigid.AddForce((this.transform.position - collision.transform.position).normalized * 5, ForceMode2D.Impulse);
-            // Invoke("NotHurt", 0.3f);
-            Invoke("playerResurrection", 3f);
+
+            if (b_Health || invincibility)
+            {
+                PlayerAnimator("IsHurt");
+                rigid.AddForce((this.transform.position - collision.transform.position).normalized * 5, ForceMode2D.Impulse);
+                Invoke("NotHurt", 0.3f);
+            }
+            else
+            {
+                PlayerAnimator("IsDeath");
+                Invoke("playerResurrection", 3f);
+            }
         }
     }
 
     void NotHurt()
     {
         b_Hurt = false;
+        b_Health = false;
     }
 
     void PlayerFlip(bool flip)
@@ -188,10 +206,28 @@ public class Player : MonoBehaviour
 
     void playerResurrection()
     {
+        if (b_Easy) // 이지모드 부활시 체력회복
+            b_Health = true;
         manager.WarpLoad("Layer 2");
         this.gameObject.layer = 21;
         rigid.velocity = Vector2.zero;
         PlayerAnimator("IsResurrection");
         b_Hurt = false;
+    }
+
+    public void setEasy()
+    {
+        b_Easy = true;
+        b_Health = true;
+    }
+
+    public void setNormal()
+    {
+        b_Normal = true;
+    }
+
+    public void setHard()
+    {
+        b_Hard = true;
     }
 }

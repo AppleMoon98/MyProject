@@ -64,11 +64,11 @@
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Scenes\TestMob.cs" />
+    <Compile Include="Assets\Scenes\GameManager.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
     <Compile Include="Assets\Scenes\Player.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
-    <Compile Include="Assets\Scenes\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
