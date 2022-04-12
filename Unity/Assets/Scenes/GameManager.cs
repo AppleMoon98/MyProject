@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public int stage;
     public Player player;
     public enum Difficulty { Easy, Normal, Hard };
     public Difficulty difficulty;
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = this.warp[PlayerPrefs.GetInt("Warp")].transform.position;
         player.GetComponent<SpriteRenderer>().sortingLayerName = warp;
+        player.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = warp;
     }
 
     public void Btn_GameStart()

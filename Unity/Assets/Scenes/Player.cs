@@ -133,8 +133,11 @@ public class Player : MonoBehaviour
         if (b_Attack || b_Hurt)
             return;
 
-        StopCoroutine(Attack());
-        StartCoroutine(Attack());
+        StopAllCoroutines();
+        if (b_Dash)
+            StartCoroutine(DashAttack()); // 0.7s
+        else
+            StartCoroutine(Attack()); // 0.8s
     }
 
     IEnumerator Attack()
@@ -149,6 +152,23 @@ public class Player : MonoBehaviour
 
         b_Attack = false;
         attackArea.SetActive(false);
+    }
+
+    IEnumerator DashAttack()
+    {
+        PlayerAnimator("IsDashAttack");
+        b_Attack = true;
+        rigid.velocity = rigid.velocity / 2;
+        yield return new WaitForSeconds(0.2f);
+
+        rigid.velocity = Vector2.zero;
+        attackArea.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+
+        attackArea.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+
+        b_Attack = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -170,12 +190,13 @@ public class Player : MonoBehaviour
             {
                 PlayerAnimator("IsHurt");
                 rigid.AddForce((this.transform.position - collision.transform.position).normalized * 5, ForceMode2D.Impulse);
-                Invoke("NotHurt", 0.3f);
+                Invoke(nameof(NotHurt), 0.3f);
             }
             else
             {
+                rigid.velocity = Vector2.zero;
                 PlayerAnimator("IsDeath");
-                Invoke("playerResurrection", 3f);
+                Invoke(nameof(playerResurrection), 3f);
             }
         }
     }

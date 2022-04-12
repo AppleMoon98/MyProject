@@ -129,11 +129,14 @@ public class TestMob : MonoBehaviour
             {
                 MobAnimator("IsHurt");
                 rigid.AddForce((this.transform.position - target.transform.position).normalized * 5, ForceMode2D.Impulse);
-                Invoke("NotHurt", 0.2f);
+                Invoke(nameof(NotHurt), 0.2f);
                 mobHealth--;
             }
             else
+            {
+                rigid.velocity = Vector2.zero;
                 MobAnimator("IsDeath");
+            }
         }
     }
 
