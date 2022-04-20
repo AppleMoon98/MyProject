@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int stage;
+    public GameObject[] objMob;
     public Player player;
     public enum Difficulty { Easy, Normal, Hard };
     public Difficulty difficulty;

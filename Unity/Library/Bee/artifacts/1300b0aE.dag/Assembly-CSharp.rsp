@@ -368,6 +368,8 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Bandits - Pixel Art/Demo/Bandit.cs"
+"Assets/Bandits - Pixel Art/Demo/Sensor_Bandit.cs"
 "Assets/Cainos/Pixel Art Top Down - Basic/Script/CameraFollow.cs"
 "Assets/Cainos/Pixel Art Top Down - Basic/Script/LayerTrigger.cs"
 "Assets/Cainos/Pixel Art Top Down - Basic/Script/PropsAltar.cs"
@@ -382,6 +384,7 @@
 "Assets/Joystick Pack/Scripts/Joysticks/VariableJoystick.cs"
 "Assets/Scenes/GameManager.cs"
 "Assets/Scenes/Player.cs"
+"Assets/Scenes/stage1mob.cs"
 "Assets/Scenes/TestMob.cs"
 "Assets/Scenes/TestMobSpell.cs"
 -langversion:9.0
